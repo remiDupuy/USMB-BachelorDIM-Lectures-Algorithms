@@ -18,10 +18,11 @@ def average_above_zero(input_list):
     return float(average)
 
 
-
+"""
 #the input list
 input_list = [1,2,3,4,-7]
 # Call the function
 result = average_above_zero(input_list)
 message = 'The average of positive smaples of {input_list} is {result} and {youpi}'.format(input_list=input_list, result = result)
 print(message)
+"""
