@@ -28,12 +28,17 @@ def max_value(input_list):
         raise ValueError('provided list is empty')
 
     max_value=input_list[0]
+    max_index = 0
 
     #compute the average of positive elements of a list
-    for item in input_list:
+    for index, item in enumerate(input_list):
         if(item > max_value):
             max_value = item
-    return max_value
+            max_index = index
+
+    print('Max index {index} and max value {value}').format(index = max_index, value = max_value)
+    return float(max_value)
+
 
 
 """
@@ -47,7 +52,7 @@ print(message)
 
 """
 #the input list
-input_list = [1,2,3,4,-7]
+input_list = [1,2,3,4,7]
 # Call the function
 result = max_value(input_list)
 message = 'The max value of {input_list} is {result}'.format(input_list=input_list, result = result)
