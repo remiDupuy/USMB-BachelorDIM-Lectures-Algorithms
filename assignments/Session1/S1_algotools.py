@@ -64,6 +64,10 @@ def reverse_table(input_list):
 
 
 def roi_bbox(img):
+    ##
+    # basic function able to get bounding box
+    # @param input_list : the matrix img to scan
+
     #initialize variables
     list_ones_row = []
     list_ones_col = []
@@ -77,6 +81,21 @@ def roi_bbox(img):
     #return only extremums
     return (min(list_ones_row), max(list_ones_row)), (min(list_ones_col), max(list_ones_col))
 
+
+def random_fill_sparse(input_array, num_fill):
+    ##
+    # basic function able to parse a list with random
+    # @param input_list : the input list to be scanned
+    # @param num_fill : number of randoms X
+    
+    for idx in xrange(num_fill):
+        x_rand = numpy.random.random_integers(input_array.shape[0]-1)
+        y_rand = numpy.random.random_integers(input_array.shape[1]-1)
+
+        input_array[x_rand][y_rand] = 'X'
+
+
+    return input_array
 
 """
 #the input list
@@ -116,4 +135,12 @@ mtx[4:7, 7:9] = numpy.ones([3, 2])
 mtx[2:4, 5:8] = numpy.ones([2, 3])
 
 result = roi_bbox(mtx)
+"""
+
+"""
+size_rows = 10
+size_cols = 10
+mtx = numpy.zeros([size_rows, size_cols], dtype=str)
+
+random_fill_sparse(mtx, 4)
 """
