@@ -17,12 +17,39 @@ def average_above_zero(input_list):
     print('Positive elements average is '+str(average))
     return float(average)
 
+def max_value(input_list):
+    ##
+    # basic function able to return the max value of a list
+    # @param input_list : the ipnut list to be scanned
+    # @throws an exception (ValueError) on an empty list
+
+    #first check of provided list is empty
+    if len(input_list) == 0 :
+        raise ValueError('provided list is empty')
+
+    max_value=input_list[0]
+
+    #compute the average of positive elements of a list
+    for item in input_list:
+        if(item > max_value):
+            max_value = item
+    return max_value
+
 
 """
 #the input list
 input_list = [1,2,3,4,-7]
 # Call the function
 result = average_above_zero(input_list)
-message = 'The average of positive smaples of {input_list} is {result} and {youpi}'.format(input_list=input_list, result = result)
+message = 'The average of positives samples of {input_list} is {result}'.format(input_list=input_list, result = result)
+print(message)
+"""
+
+"""
+#the input list
+input_list = [1,2,3,4,-7]
+# Call the function
+result = max_value(input_list)
+message = 'The max value of {input_list} is {result}'.format(input_list=input_list, result = result)
 print(message)
 """
