@@ -87,7 +87,7 @@ def random_fill_sparse(input_array, num_fill):
     # basic function able to parse a list with random
     # @param input_list : the input list to be scanned
     # @param num_fill : number of randoms X
-    
+
     for idx in xrange(num_fill):
         x_rand = numpy.random.random_integers(input_array.shape[0]-1)
         y_rand = numpy.random.random_integers(input_array.shape[1]-1)
@@ -96,6 +96,24 @@ def random_fill_sparse(input_array, num_fill):
 
 
     return input_array
+
+def remove_whitespace(string):
+    ##
+    # basic function to remove white space in a string
+    # @param string : input string
+    # @return string
+
+    if string.isspace():
+        return ""
+
+    clean_str = ""
+
+    for character in string:
+        if not character.isspace():
+            clean_str += character
+
+    return clean_str
+
 
 """
 #the input list
@@ -143,4 +161,11 @@ size_cols = 10
 mtx = numpy.zeros([size_rows, size_cols], dtype=str)
 
 random_fill_sparse(mtx, 4)
+"""
+
+"""
+string = "test td sf    dsqdsd"
+result = remove_whitespace(string)
+message = "The message : {string} without spaces equals : {clean_string}".format(string=string, clean_string=result)
+print message
 """
