@@ -1,7 +1,12 @@
 # coding: utf-8
 
+"""
+Little game of dice, first player to 100 win. It's a player vs Computer
+"""
 import random
 
+
+# Initialize scores and variables
 score_user = 0
 score_computer = 0
 
@@ -14,6 +19,7 @@ current_player = USER_TURN
 ## Execute each turn until one score is > 100
 while score_computer < 100 and score_user < 100:
 
+    #Check player turn
     if(current_player == USER_TURN) :
         print('\n\nUSER TURN')
 
@@ -21,6 +27,7 @@ while score_computer < 100 and score_user < 100:
         current_player = COMPUTER_TURN
 
 
+        # Loop for the turn, exit if wanted or dice score equals 1
         turn_score = 0
         while(not exit) :
             dice_value = random.randint(1, 6)
