@@ -114,6 +114,19 @@ def remove_whitespace(string):
 
     return clean_str
 
+def shuffle(list):
+    ##
+    # basic function to shuffle randomly a list
+    # @param : input list
+    shuffled_list = []
+    len_list = len(list)
+    for idx in reversed(xrange(len_list)):
+        j = numpy.random.randint(idx, len_list)
+        cur_value = list[j]
+        list[j] = list[idx]
+        list[idx] = cur_value
+
+    return list
 
 """
 #the input list
@@ -167,5 +180,12 @@ random_fill_sparse(mtx, 4)
 string = "test td sf    dsqdsd"
 result = remove_whitespace(string)
 message = "The message : {string} without spaces equals : {clean_string}".format(string=string, clean_string=result)
+print message
+"""
+
+"""
+input_list = [1,3,4,7]
+result = shuffle(input_list)
+message = "The input list : [1,3,4,7] , after shuffle : {result}".format(input=input_list, result=result)
 print message
 """
