@@ -128,6 +128,110 @@ def shuffle(list):
 
     return list
 
+
+"""
+1. Selective sorting
+(a) Inital vector 10 15 7 1 3 3 9
+    1. Extrama = max = 15 / We exchange 15 with 10 and idx = 1
+    15 10 7 1 3 3 9
+    
+    2. Extrama = max = 10 / We exchange 10 with 10 and idx = 2
+    15 10 7 1 3 3 9
+    
+    3. Extrama = max = 9 / We exchange 9 with 7 and idx = 3
+    15 10 9 1 3 3 7
+    
+    4. Extrama = max = 7 / We exchange 7 with 1 and idx = 4
+    15 10 9 7 3 3 1
+    
+    5. Extrama = max = 3 / We exchange 3 with 3 and idx = 5
+    15 10 9 7 3 3 1
+    
+    6. Extrama = max = 3 / We exchange 3 with 3 and idx = 6
+    15 10 9 7 3 3 1
+    
+    7. Extrama = max = 1 / We exchange 1 with 1 and idx = 7
+    15 10 9 7 3 3 1
+    
+(b) No, it doesn't depend on the content only the length
+(c) number of iterations = length of vector = 7
+(d) 7
+(e) 7*6/2 = 21
+(f) The complexity is O(n+1)!
+    
+"""
+
+def sort_selective(list) :
+    ## Function able to sort a list with the selective method
+    # @param : input list
+    list_len = len(list)
+    for idx in xrange(list_len - 1):
+        max_idx = idx
+
+        for idx_j in xrange(idx, list_len):
+            if(list[max_idx] < list[idx_j]) :
+                max_idx = idx_j
+
+        if(max_idx != idx):
+            temp = list[idx]
+            list[idx] = list[max_idx]
+            list[max_idx] = temp
+
+    return list
+
+
+
+
+"""
+input_list = [10, 15, 7, 1, 3, 3, 9]
+print sort_selective(input_list)
+"""
+
+"""
+1. Bubble sorting
+(a) Inital vector 10 15 7 1 3 3 9
+    10 7 15 1 3 3 9
+    10 7 1 15 3 3 9
+    10 7 1 3 15 3 9
+    10 7 1 3 3 15 9
+    10 7 1 3 3 9 15
+    Loop again on list
+    7 10 1 3 3 9 15
+    7 1 10 3 3 9 15
+    7 1 3 10 3 9 15
+    7 1 3 3 10 9 15
+    7 1 3 3 9 10 15
+    Loop again
+    1 7 3 3 9 10 15
+    1 3 7 3 9 10 15
+    1 3 3 7 9 10 15
+    List sorted !!!    
+
+(b) Yes, it does depend on the content only the length
+(c) 
+(d) 13 permutations are applied
+(e) 24 comparasions are applied
+(f) The complexity is O(n^2)
+
+"""
+def sort_bubble(list) :
+    ## Function able to sort a list with the bubble method
+    # @param : input list
+    for idx in reversed(xrange(1, len(list))):
+        for idx_j in xrange(idx):
+            if list[idx_j + 1] < list[idx_j] :
+                temp = list[idx_j + 1]
+                list[idx_j + 1] = list[idx_j]
+                list[idx_j] = temp
+
+
+    return list
+
+"""
+input_list = [10, 15, 7, 1, 3, 3, 9]
+print sort_bubble(input_list)
+"""
+
 """
 #the input list
 input_list = [1,2,3,4,-7]
