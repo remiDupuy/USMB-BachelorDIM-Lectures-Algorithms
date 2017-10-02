@@ -4,6 +4,7 @@ File containing all tests for S1_algotools
 
 import pytest
 import S1_algotools as s
+import numpy
 
 ## Functions to test average_above_zero function
 def test_average_above_zero_4():
@@ -63,4 +64,39 @@ def test_reverse_table_empty():
 def test_reverse_table_moins1000_moins3_0_5():
     input_list = [5,0,-3,-1000]
     assert s.reverse_table(input_list) == [-1000, -3, 0, 5]
+##END reserve table
 
+
+## Tests for Roi Bbox
+def test_roi_bbox_1():
+    size_rows = 10
+    size_cols = 10
+    mtx = numpy.zeros([size_rows, size_cols])
+    mtx[4:7, 7:9] = numpy.ones([3, 2])
+    mtx[2:4, 5:8] = numpy.ones([2, 3])
+    assert s.roi_bbox(mtx) == ((2, 6), (5, 8))
+
+def test_roi_bbox_0():
+    size_rows = 10
+    size_cols = 10
+    mtx = numpy.zeros([size_rows, size_cols])
+    with pytest.raises(ValueError):
+        s.roi_bbox(mtx)
+
+
+def test_roi_bbox_full_ones():
+    size_rows = 10
+    size_cols = 10
+    mtx = numpy.ones([size_rows, size_cols])
+    assert s.roi_bbox(mtx) == ((0, 9), (0, 9))
+#End roi bbox
+
+
+## Tests for random_fill_parse
+def test_random_fill_parse():
+    size_rows = 5
+    size_cols = 5
+    mtx = numpy.zeros([size_rows, size_cols], dtype=str)
+    with pytest.raises(ValueError):
+        s.random_fill_sparse(mtx, 26)
+#End random_fill_parse

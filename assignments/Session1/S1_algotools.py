@@ -81,6 +81,12 @@ def roi_bbox(img):
                 list_ones_row.append(row)
                 list_ones_col.append(col)
 
+    if(len(list_ones_row) == 0):
+        raise ValueError('empty array')
+
+    if(len(list_ones_col) == 0):
+        raise ValueError('empty array')
+
     #return only extremums
     return (min(list_ones_row), max(list_ones_row)), (min(list_ones_col), max(list_ones_col))
 
@@ -90,6 +96,11 @@ def random_fill_sparse(input_array, num_fill):
     # basic function able to parse a list with random
     # @param input_list : the input list to be scanned
     # @param num_fill : number of randoms X
+
+    if(num_fill > input_array.shape[0] * input_array.shape[1]):
+        raise ValueError()
+
+
 
     for idx in xrange(num_fill):
         x_rand = numpy.random.random_integers(input_array.shape[0]-1)
