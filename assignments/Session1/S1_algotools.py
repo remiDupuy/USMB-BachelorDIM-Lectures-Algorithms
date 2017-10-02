@@ -17,6 +17,9 @@ def average_above_zero(input_list):
         if (item > 0):
             positive_values_sum += item
             positive_values_counter += 1
+
+    if positive_values_counter == 0 :
+        return 0
     average = float(positive_values_sum) / float(positive_values_counter)
     print('Positive elements average is ' + str(average))
     return float(average)
