@@ -39,3 +39,28 @@ def test_max_value_negative2():
 def test_max_value_0():
     input_list = [-4, -5, -1, 0]
     assert s.max_value(input_list) == 0
+
+
+def test_max_value_empty():
+    input_list = []
+    with pytest.raises(ValueError):
+        s.max_value(input_list)
+# End test max_value
+
+
+## Tests reserve_table
+def test_reverse_table_4321():
+    input_list = [1,2,3,4]
+    assert s.reverse_table(input_list) == [4,3,2,1]
+
+
+def test_reverse_table_empty():
+    input_list = []
+    with pytest.raises(ValueError):
+        s.reverse_table(input_list)
+
+
+def test_reverse_table_moins1000_moins3_0_5():
+    input_list = [5,0,-3,-1000]
+    assert s.reverse_table(input_list) == [-1000, -3, 0, 5]
+
