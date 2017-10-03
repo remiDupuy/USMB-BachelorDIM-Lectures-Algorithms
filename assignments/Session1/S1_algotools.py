@@ -93,7 +93,7 @@ def roi_bbox(img):
 
 def random_fill_sparse(input_array, num_fill):
     ##
-    # basic function able to parse a list with random
+    # basic function able to parse a list with random char
     # @param input_list : the input list to be scanned
     # @param num_fill : number of randoms X
 
@@ -132,7 +132,9 @@ def shuffle(list):
     ##
     # basic function to shuffle randomly a list
     # @param : input list
-    shuffled_list = []
+    if(len(list) == 0):
+        raise ValueError()
+
     len_list = len(list)
     for idx in reversed(xrange(len_list)):
         j = numpy.random.randint(idx, len_list)
