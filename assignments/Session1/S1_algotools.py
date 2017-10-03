@@ -113,7 +113,6 @@ def random_fill_sparse(input_array, num_fill):
             if(input_array[x_rand][y_rand] != 'X'):
                 isUsed = False
 
-
         input_array[x_rand][y_rand] = 'X'
 
 
