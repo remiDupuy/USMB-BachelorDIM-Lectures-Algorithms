@@ -100,3 +100,19 @@ def test_random_fill_parse():
     with pytest.raises(ValueError):
         s.random_fill_sparse(mtx, 26)
 #End random_fill_parse
+
+## Tests for remove_whitespace
+
+def test_remove_whitespace_normal():
+    input_str = 'sddsd ddd ssd'
+    assert s.remove_whitespace(input_str) == 'sddsddddssd'
+
+def test_remove_whitespace_empty():
+    input_str = '      '
+    assert s.remove_whitespace(input_str) == ''
+
+def test_remove_whitespace_without_spaces():
+    input_str = 'sddsddddssd'
+    assert s.remove_whitespace(input_str) == 'sddsddddssd'
+
+# End remove_whitespace
