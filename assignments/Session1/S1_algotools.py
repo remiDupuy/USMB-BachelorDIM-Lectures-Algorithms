@@ -100,18 +100,16 @@ def random_fill_sparse(input_array, num_fill):
     if(num_fill > input_array.shape[0] * input_array.shape[1]):
         raise ValueError()
 
-
-
     for idx in xrange(num_fill):
-        isUsed = True
+        is_used = True
         x_rand = 0
         y_rand = 0
-        while(isUsed) :
+        while(is_used) :
             x_rand = numpy.random.random_integers(input_array.shape[0]-1)
             y_rand = numpy.random.random_integers(input_array.shape[1]-1)
 
             if(input_array[x_rand][y_rand] != 'X'):
-                isUsed = False
+                is_used = False
 
         input_array[x_rand][y_rand] = 'X'
 
@@ -211,7 +209,7 @@ def sort_selective(list) :
 
 """
 input_list = [10, 15, 7, 1, 3, 3, 9]
-print sort_selective(input_list)
+print(sort_selective(input_list))
 """
 
 """
@@ -260,7 +258,7 @@ def sort_bubble(list) :
 
 """
 input_list = [10, 15, 7, 1, 3, 3, 9]
-print sort_bubble(input_list)
+print(sort_bubble(input_list))
 """
 
 """
@@ -315,12 +313,12 @@ print(random_fill_sparse(mtx, 4))
 string = "test td sf    dsqdsd"
 result = remove_whitespace(string)
 message = "The message : {string} without spaces equals : {clean_string}".format(string=string, clean_string=result)
-print message
+print(message)
 """
 
 """
 input_list = [1,3,4,7]
 result = shuffle(input_list)
 message = "The input list : [1,3,4,7] , after shuffle : {result}".format(input=input_list, result=result)
-print message
+print(message)
 """
