@@ -158,3 +158,31 @@ def test_shuffle_empty():
     with pytest.raises(ValueError):
         s.shuffle(input_list)
 # End shuffle
+
+
+# Tests for sort_selective
+
+def test_sort_selective_empty():
+    input_list = []
+    with pytest.raises(ValueError):
+        s.sort_selective(input_list)
+
+def test_sort_selective_classic():
+    input_list = [2, -6, 10, 0]
+    assert s.sort_selective(input_list) == [10, 2, 0, -6]
+
+# End
+
+
+# Tests for sort_selective
+
+def test_sort_bubble_empty():
+    input_list = []
+    with pytest.raises(ValueError):
+        s.sort_bubble(input_list)
+
+def test_sort_bubble_classic():
+    input_list = [2, -6, 10, 0]
+    assert s.sort_bubble(input_list) == [-6, 0, 2, 10]
+
+# End

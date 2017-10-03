@@ -187,6 +187,10 @@ def shuffle(list):
 def sort_selective(list) :
     ## Function able to sort a list with the selective method
     # @param : input list
+
+    if (len(list) == 0):
+        raise ValueError()
+
     list_len = len(list)
     for idx in xrange(list_len - 1):
         max_idx = idx
@@ -240,6 +244,10 @@ print sort_selective(input_list)
 def sort_bubble(list) :
     ## Function able to sort a list with the bubble method
     # @param : input list
+
+    if (len(list) == 0):
+        raise ValueError()
+
     for idx in reversed(xrange(1, len(list))):
         for idx_j in xrange(idx):
             if list[idx_j + 1] < list[idx_j] :
