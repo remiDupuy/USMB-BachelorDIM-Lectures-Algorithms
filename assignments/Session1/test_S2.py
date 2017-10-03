@@ -113,7 +113,12 @@ def test_random_fill_parse():
     with pytest.raises(ValueError):
         s.random_fill_sparse(mtx, 26)
 
-
+def test_random_fill_parse_normal():
+    size_rows = 5
+    size_cols = 5
+    mtx = numpy.zeros([size_rows, size_cols], dtype=str)
+    res = numpy.sum(s.random_fill_sparse(mtx, 5) == 'X')
+    assert res == 5
 # End random_fill_parse
 
 

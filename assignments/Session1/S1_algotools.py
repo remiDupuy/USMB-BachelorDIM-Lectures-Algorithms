@@ -103,8 +103,16 @@ def random_fill_sparse(input_array, num_fill):
 
 
     for idx in xrange(num_fill):
-        x_rand = numpy.random.random_integers(input_array.shape[0]-1)
-        y_rand = numpy.random.random_integers(input_array.shape[1]-1)
+        isUsed = True
+        x_rand = 0
+        y_rand = 0
+        while(isUsed) :
+            x_rand = numpy.random.random_integers(input_array.shape[0]-1)
+            y_rand = numpy.random.random_integers(input_array.shape[1]-1)
+
+            if(input_array[x_rand][y_rand] != 'X'):
+                isUsed = False
+
 
         input_array[x_rand][y_rand] = 'X'
 
@@ -288,13 +296,13 @@ mtx[2:4, 5:8] = numpy.ones([2, 3])
 result = roi_bbox(mtx)
 """
 
-"""
+
 size_rows = 10
 size_cols = 10
 mtx = numpy.zeros([size_rows, size_cols], dtype=str)
 
-random_fill_sparse(mtx, 4)
-"""
+print(random_fill_sparse(mtx, 4))
+
 
 """
 string = "test td sf    dsqdsd"
