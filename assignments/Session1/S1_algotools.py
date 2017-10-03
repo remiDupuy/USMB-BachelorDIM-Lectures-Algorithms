@@ -81,10 +81,7 @@ def roi_bbox(img):
                 list_ones_row.append(row)
                 list_ones_col.append(col)
 
-    if(len(list_ones_row) == 0):
-        raise ValueError('empty array')
-
-    if(len(list_ones_col) == 0):
+    if(len(list_ones_row) == 0 && len(list_ones_col)):
         raise ValueError('empty array')
 
     #return only extremums
