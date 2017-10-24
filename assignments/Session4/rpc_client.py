@@ -1,6 +1,8 @@
 import os
 import uuid
-
+import msgpack
+import msgpack_numpy as m
+import numpy
 import pika
 
 amqp_url='amqp://tijjoigp:0uzZbSC8N5fxxkHsgXKaB5CcE4eKjKWf@lark.rmq.cloudamqp.com/tijjoigp'
@@ -15,18 +17,21 @@ result = channel.queue_declare(exclusive=True)
 callback_queue = result.method.queue
 
 corr_id = str(uuid.uuid4())
-messageBody = 'Fine and you?'
+messageBody = numpy.random.random((20,30))
+#messageJson = {'type': 0, 'value': 'Test'}
+encoded_message = m.packb(messageBody, default = m.encode)
 ##
 # Publish message in queue
 channel.basic_publish(exchange='',
                            routing_key='rpc_queue',
                            properties=pika.BasicProperties(
                                  reply_to = callback_queue,
-                                 correlation_id = corr_id),
-                           body=messageBody)
+                                 correlation_id = corr_id
+                           ),
+                           body=encoded_message)
 
 
-print(" [x] Sent "+messageBody)
+#print(" [x] Sent "+encoded_message)
 
 
 ##
@@ -35,11 +40,11 @@ response=None
 def on_response(ch, method, props, body):
     # Check if it's our message
     if corr_id != props.correlation_id:
-        raise Exception;
+        raise Exception()
 
     global response
     response=str(body)
-    print(response)
+    print(m.unpackb(response, object_hook = m.decode))
 
 print('Starting to wait on the response queue')
 channel.basic_consume(on_response, no_ack=True,
