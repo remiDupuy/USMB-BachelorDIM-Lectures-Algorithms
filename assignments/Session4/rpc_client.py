@@ -18,19 +18,18 @@ result = channel.queue_declare(exclusive=True)
 callback_queue = result.method.queue
 
 corr_id = str(uuid.uuid4())
-messageBody = cv2.imread('../Session1/cat.jpg', 1)
-messageBody = cv2.bitwise_not(messageBody)
+messageBody = numpy.random.random((20,30))
 #messageJson = {'type': 0, 'value': 'Test'}
 encoded_message = m.packb(messageBody, default = m.encode)
 ##
 # Publish message in queue
 channel.basic_publish(exchange='',
-                       routing_key='rpc_queue',
-                       properties=pika.BasicProperties(
-                             reply_to = callback_queue,
-                             correlation_id = corr_id
-                       ),
-                       body=encoded_message)
+                           routing_key='rpc_queue',
+                           properties=pika.BasicProperties(
+                                 reply_to = callback_queue,
+                                 correlation_id = corr_id
+                           ),
+                           body=encoded_message)
 
 
 #print(" [x] Sent "+encoded_message)
